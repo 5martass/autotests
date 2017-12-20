@@ -64,7 +64,7 @@ def lookup(driver, query):
         catalog.click()
     except TimeoutException:
         print("Catalog block not found")
-#до сих пор не уверен работают ли эксепшены, потом проверю мб
+#не уверен работают ли эксепшены, потом проверю мб
     try:
         catalog_catalog = driver.wait.until(EC.presence_of_element_located(
             (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[2]/ul/li[1]/a/span')))
