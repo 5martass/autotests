@@ -14,6 +14,8 @@ def init_driver():
 
 def lookup(driver, query):
     driver.get("http://localhost/litecart/admin/login.php")
+
+#login admin section
     try:
         box = driver.wait.until(EC.presence_of_element_located(
             (By.NAME, "username")))
@@ -30,7 +32,58 @@ def lookup(driver, query):
                 (By.NAME, "login")))
             button.click()
     except TimeoutException:
-        print("Box or Button not found")
+        print("Button not found")
+#check nav menu
+#appearence
+    try:
+        appearence = driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[1]/a/span[2]')))
+        appearence.click()
+    except TimeoutException:
+        print("Appearence block not found")
+#по сути 1 пункт уже открыт сразу после открытия списка можно было бы сразу проверку написать, но мало, лучше речекнуть
+    try:
+        appearence_template = driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[1]/ul/li[1]/a/span')))
+        appearence_template.click()
+        driver.find_element(By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[3]/h1').text == "Template"
+    except TimeoutException:
+        print("Template nav.block of header not found")
+
+    try:
+        appearence_logo = driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[1]/ul/li[2]/a/span')))
+        appearence_logo.click()
+        driver.find_element(By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[3]/h1').text == "Logotype"
+    except TimeoutException:
+        print("Logotype nav.block of header not found")
+#Catalog
+    try:
+        catalog= driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[2]/a/span[2]')))
+        catalog.click()
+    except TimeoutException:
+        print("Catalog block not found")
+#до сих пор не уверен работают ли эксепшены, потом проверю мб
+    try:
+        catalog_catalog = driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[2]/ul/li[1]/a/span')))
+        catalog_catalog.click()
+        driver.find_element(By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[3]/h1').text == "Catalog"
+    except TimeoutException:
+        print("Catalog nav.block of header not found")
+
+    try:
+        catalog_pg = driver.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[1]/div[3]/ul/li[2]/ul/li[2]/a/span')))
+        catalog_pg.click()
+        driver.find_element(By.XPATH, '/html/body/div/div/div/table/tbody/tr/td[3]/h1').text == "Product Groups"
+    except TimeoutException:
+        print("Product Groups nav.block of header not found")
+
+#etc
+#дописывать не буду наверное, идею же я понял
+#чувство когда комментишь с мыслью о том что читать все равно никто не будет
 
 driver = init_driver()
 lookup(driver, "Selenium")
