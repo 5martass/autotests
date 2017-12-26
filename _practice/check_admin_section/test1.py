@@ -12,7 +12,7 @@ def init_driver():
     driver.wait = WebDriverWait(driver, 5)
     return driver
 
-def lookup(driver):
+def lookup(driver,query):
     driver.get("http://localhost/litecart/admin/login.php")
 
 #login admin section
