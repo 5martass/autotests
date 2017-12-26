@@ -12,7 +12,7 @@ def init_driver():
     driver.wait = WebDriverWait(driver, 5)
     return driver
 
-def lookup(driver, query):
+def lookup(driver):
     driver.get("http://localhost/litecart/")
 
 #open products section
