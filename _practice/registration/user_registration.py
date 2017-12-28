@@ -50,8 +50,7 @@ def lookup(driver,query):
         phone.click()
         phone.send_keys("+0123456789")
 
-        select_country_field = select_country = driver.wait.until(EC.presence_of_element_located(
-            (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/div/form/table/tbody/tr[5]/td[1]/span[2]')))
+        select_country_field = driver.find_element_by_css_selector('.select2-selection__arrow')
         select_country_field.click()
         country_search = driver.wait.until(EC.presence_of_element_located(
             (By.XPATH, '/html/body/span/span/span[1]/input')))
@@ -71,7 +70,8 @@ def lookup(driver,query):
         я мог бы полезть в исходники и отрубить ее,
         но не буду'''
         time.sleep(10)
-
+        
+        driver.execute_script("window.scrollTo(0, 500)")
         create_account = driver.wait.until(EC.presence_of_element_located(
             (By.NAME, "create_account")))
         create_account.click()
