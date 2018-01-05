@@ -3,7 +3,7 @@ from operator import itemgetter
 
 users = [
 	{"name": "invalid_user", "email": "invalidUser@test.com", "password": "qwert1235"},
-	{"name": "valid_user", "email": "Jonh@Dou.aa", "password": "password123"},
+	{"name": "valid_user", "email": "validUser@yahoo.com", "password": "ValidPassword"},
 ]
 
 def get_user(name):

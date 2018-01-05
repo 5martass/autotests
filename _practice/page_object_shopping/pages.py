@@ -4,7 +4,6 @@ from base import Page
 from locators import *
 import users
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import ElementNotVisibleException
 import time
 
 class MainPage(Page):
@@ -17,5 +16,21 @@ class MainPage(Page):
         time.sleep(2)
         return self.find_element(*MainPageLocators.SEARCH_LIST).text
 
+    def click_sign_up_button(self):
+        self.find_element(*MainPageLocators.SIGNUP).click()
+        time.sleep(2)
+        return SignUpPage(self.driver)
+
+    def click_sign_in_button(self):
+        self.find_element(*MainPageLocators.LOGIN).click()
+        time.sleep(2)
+        return LoginPage(self.driver)
+
 class LoginPage(Page):
+    pass
+
+class HomePage(Page):
+    pass
+
+class SignUpPage(Page):
     pass
