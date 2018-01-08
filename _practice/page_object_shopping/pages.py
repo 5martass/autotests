@@ -27,7 +27,27 @@ class MainPage(Page):
         return LoginPage(self.driver)
 
 class LoginPage(Page):
-    pass
+    def enter_email(self, user):
+        self.find_element(*LoginPageLocators.EMAIL).send_keys(users.get_user(user)["email"])
+
+    def enter_password(self, user):
+        self.find_element(*LoginPageLocators.PASSWORD).send_keys(users.get_user(user)["password"])
+
+    def click_login_button(self):
+        self.find_element(*LoginPageLocators.SUBMIT).click()
+
+    def login(self, user):
+        self.enter_email(user)
+        self.enter_password(user)
+        self.click_login_button()
+
+    def login_with_valid_user(self, user):
+        self.login(user)
+        return HomePage(self.driver)
+
+    def login_with_in_valid_user(self, user):
+        self.login(user)
+        return self.find_element(*LoginPageLocators.ERROR_MESSAGE).text
 
 class HomePage(Page):
     pass
