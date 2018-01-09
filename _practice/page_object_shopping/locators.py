@@ -14,3 +14,10 @@ class LoginPageLocators(object):
   PASSWORD      = (By.NAME, 'password')
   SUBMIT        = (By.NAME, 'login')
   ERROR_MESSAGE = (By.CSS_SELECTOR, '.notice')
+
+class ShoppingLocators(object):
+  PURPLE_DUCK   = (By.XPATH, '//*[contains(text(), "Purple Duck")]')
+  QUANTITY      = (By.NAME, 'quantity')
+  ADD_PRODUCT   = (By.NAME, 'add_cart_product')
+  CART          = (By.ID, 'cart')
+  REMOVE        = (By.NAME, 'remove_cart_item')
