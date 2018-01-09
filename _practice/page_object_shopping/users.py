@@ -1,9 +1,9 @@
 from operator import itemgetter
 
-
+#doesntwork
 users = [
 	{"name": "invalid_user", "email": "invalidUser@test.com", "password": "qwert1235"},
-	{"name": "valid_user", "email": "validUser@yahoo.com", "password": "ValidPassword"},
+	{"name": "valid_user", "email": "Jonh@Dou.aa", "password": "password123"},
 ]
 
 def get_user(name):
