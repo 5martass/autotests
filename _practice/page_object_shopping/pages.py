@@ -30,7 +30,7 @@ class MainPage(Page):
         time.sleep(1)
         return SignUpPage(self.driver)
 
-    def click_sign_in_button(self):
+    def sign_in(self):
         self.driver.get("http://localhost/litecart/en/login")
         time.sleep(1)
         return LoginPage(self.driver)
@@ -42,8 +42,19 @@ class LoginPage(Page):
     def enter_password(self, user):
         self.find_element(*LoginPageLocators.PASSWORD).send_keys('password123')
 
+    def enter_in_valid_email(self, user):
+        self.find_element(*LoginPageLocators.EMAIL).send_keys('invalidUser@test.com')
+
+    def enter_in_valid_password(self, user):
+        self.find_element(*LoginPageLocators.PASSWORD).send_keys('qwert1235')
+
     def click_login_button(self):
         self.find_element(*LoginPageLocators.SUBMIT).click()
+
+    def in_valid_login(self, user):
+        self.enter_in_valid_email(user)
+        self.enter_in_valid_password(user)
+        self.click_login_button()
 
     def login(self, user):
         self.enter_email(user)
@@ -52,11 +63,11 @@ class LoginPage(Page):
 
     def login_with_valid_user(self, user):
         self.login(user)
-        return HomePage(self.driver)
+        return self.find_element(*LoginPageLocators.MESSAGE).text
 
     def login_with_in_valid_user(self, user):
-        self.login(user)
-        return self.find_element(*LoginPageLocators.ERROR_MESSAGE).text
+        self.in_valid_login(user)
+        return self.find_element(*LoginPageLocators.MESSAGE).text
 
 class HomePage(Page):
     pass

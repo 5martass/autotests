@@ -31,15 +31,14 @@ class TestPages(unittest.TestCase):
     def test_sign_in_with_valid_user(self):
         print ("\n" + str(test_cases(4)))
         mainPage = MainPage(self.driver)
-        loginPage = mainPage.click_sign_in_button()
+        loginPage = mainPage.sign_in()
         result = loginPage.login_with_valid_user("valid_user")
-        self.assertIn("litecart", result.get_url())
+        self.assertIn("You are now logged in", result)
 
-    @unittest.skip(' ')
     def test_sign_in_with_in_valid_user(self):
         print ("\n" + str(test_cases(5)))
         mainPage = MainPage(self.driver)
-        loginPage = mainPage.click_sign_in_button()
+        loginPage = mainPage.sign_in()
         result = loginPage.login_with_in_valid_user("invalid_user")
         self.assertIn("Wrong password or the account is disabled, or does not exist", result)
 

@@ -13,7 +13,7 @@ class LoginPageLocators(object):
   EMAIL         = (By.NAME, 'email')
   PASSWORD      = (By.NAME, 'password')
   SUBMIT        = (By.NAME, 'login')
-  ERROR_MESSAGE = (By.CSS_SELECTOR, '.notice')
+  MESSAGE       = (By.CSS_SELECTOR, '.notice')
 
 class ShoppingLocators(object):
   PURPLE_DUCK   = (By.XPATH, '//*[contains(text(), "Purple Duck")]')
