@@ -13,7 +13,6 @@ class MainPage(Page):
     def search_item(self, item):
         self.find_element(*MainPageLocators.SEARCH).send_keys(item)
         self.find_element(*MainPageLocators.SEARCH).send_keys(Keys.RETURN)
-        time.sleep(1)
         return self.find_element(*MainPageLocators.SEARCH_LIST).text
 
     def add_some_ducks(self):
@@ -27,12 +26,10 @@ class MainPage(Page):
 
     def click_sign_up_button(self):
         self.find_element(*MainPageLocators.SIGNUP).click()
-        time.sleep(1)
         return SignUpPage(self.driver)
 
     def sign_in(self):
         self.driver.get("http://localhost/litecart/en/login")
-        time.sleep(1)
         return LoginPage(self.driver)
 
 class LoginPage(Page):
@@ -74,3 +71,27 @@ class HomePage(Page):
 
 class SignUpPage(Page):
     pass
+
+class AdminPage(Page):
+
+    def login(self):
+        self.driver.get("http://localhost/litecart/admin")
+        self.find_element(*AdminPageLocators.USERNAME).send_keys('admin')
+        self.find_element(*AdminPageLocators.PASSWORD).send_keys('admin')
+        self.find_element(*AdminPageLocators.LOGINBUTTON).click()
+        return AdminPage(self.driver)
+
+    def navigation(self):
+        self.find_element(*AdminPageLocators.APPEARENCE).click()
+        self.find_element(*AdminPageLocators.APP_LOGO).click()
+        self.find_element(*AdminPageLocators.APP_TEMPLATE).click()
+        self.find_element(*AdminPageLocators.CATALOG).click()
+        self.find_element(*AdminPageLocators.CAT_PG).click()
+        self.find_element(*AdminPageLocators.CAT_S).click()
+        self.find_element(*AdminPageLocators.CAT_M).click()
+        self.find_element(*AdminPageLocators.CAT_DS).click()
+        self.find_element(*AdminPageLocators.CAT_OG).click()
+        self.find_element(*AdminPageLocators.CAT_CSV).click()
+        self.find_element(*AdminPageLocators.CAT_SOS).click()
+        self.find_element(*AdminPageLocators.CAT_QU).click()
+        self.find_element(*AdminPageLocators.COUNTRIES).click()

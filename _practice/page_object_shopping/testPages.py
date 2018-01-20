@@ -11,6 +11,7 @@ class TestPages(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Chrome()
         self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(10)
         self.driver.get("http://localhost/litecart/en/")
         print ("\n" + str(test_cases(0)))
         page = MainPage(self.driver)
@@ -49,6 +50,13 @@ class TestPages(unittest.TestCase):
         self.assertIn("Duck", search_result)
         add_ducks = page.add_some_ducks()
         self.assertIn("Remove", add_ducks)
+
+    def test_admin_navigation_check(self):
+        #print ("\n" + str(test_cases(7)))
+        page = AdminPage(self.driver)
+        login = page.login()
+        self.assertIn("admin", signUpPage.get_url())
+        check_nav_menu = page.navigation()
 
     def tearDown(self):
         self.driver.close()
