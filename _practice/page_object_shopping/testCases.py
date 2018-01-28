@@ -1,4 +1,6 @@
+import pytest
 
+@pytest.fixture
 def test_cases(number):
     return testCases[number]
 
