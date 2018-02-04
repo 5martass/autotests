@@ -33,14 +33,14 @@ class TestPages(unittest.TestCase):
         print ("\n" + str(test_cases(4)))
         mainPage = MainPage(self.driver)
         loginPage = mainPage.sign_in()
-        result = loginPage.login_with_valid_user("valid_user")
+        result = loginPage.login(email = 'Jonh@Dou.aa', password = 'password123')
         self.assertIn("You are now logged in", result)
 
     def test_sign_in_with_in_valid_user(self):
         print ("\n" + str(test_cases(5)))
         mainPage = MainPage(self.driver)
         loginPage = mainPage.sign_in()
-        result = loginPage.login_with_in_valid_user("invalid_user")
+        result = loginPage.login(email = 'invalidUser@test.com', password = 'qwert1235')
         self.assertIn("Wrong password or the account is disabled, or does not exist", result)
 
     def test_shopping_cart(self):
