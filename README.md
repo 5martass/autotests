@@ -3,6 +3,6 @@ selenium rep
 
 for practice was used: 
 
-https://www.litecart.net/ 
+unittest https://www.litecart.net/ 
 
-https://sourceforge.net/projects/php-addressbook/
+pytest https://sourceforge.net/projects/php-addressbook/
