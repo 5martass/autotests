@@ -9,6 +9,13 @@ class Application(object):
         self.session = session_control(self)
         self.group = group_control(self)
 
+    def is_valid(self):
+        try:
+            self.driver.current_url
+            return True
+        except:
+            return False
+
     def open_home_page(self):
         driver = self.driver
         driver.get("http://localhost/addressbook/index.php")
