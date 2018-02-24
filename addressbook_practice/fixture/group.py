@@ -6,7 +6,10 @@ class group_control:
 
     def open_groups_page(self):
         driver = self.app.driver
-        driver.find_element_by_link_text('groups').click()
+        if (driver.current_url.endswith('/group.php') and len(find_elements_by_name('new')) > 0):
+            return
+        else:
+            driver.find_element_by_link_text('groups').click()
 
     def change_field_value(self, field_name, text):
         driver = self.app.driver
